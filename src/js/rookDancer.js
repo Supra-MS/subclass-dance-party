@@ -11,7 +11,8 @@ RookDancer.prototype.step = function() {
   Dancer.prototype.step.call(this);
 };
 
-RookDancer.prototype.chessMoves = function() {
+RookDancer.prototype.chessMoves = function(animationName) {
   Dancer.prototype.chessMoves.call(this);
-  this.animate('squash');
+  animationName = animationName || 'squash';
+  this.animate(animationName);
 };

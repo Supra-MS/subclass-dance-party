@@ -13,7 +13,8 @@ KnightDancer.prototype.step = function() {
   Dancer.prototype.step.call(this);
 };
 
-KnightDancer.prototype.chessMoves = function() {
+KnightDancer.prototype.chessMoves = function(animationName) {
   Dancer.prototype.chessMoves.call(this);
-  this.animate('shake');
+  animationName = animationName || 'shake';
+  this.animate(animationName);
 };

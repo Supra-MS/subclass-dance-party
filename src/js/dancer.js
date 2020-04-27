@@ -44,7 +44,8 @@ Dancer.prototype.animate = function(animationName) {
 Dancer.prototype.createDancer = function(addClas, top, left, addFn) {
   var dancer = new addFn(top, left);
   this.dancers.push(dancer);
-  $('i').addClass(addClas);
+  window.dancers.push(dancer);
+  dancer.$inner.addClass(addClas);
   dancer.setPosition(top * this.pixPerMove, left * this.pixPerMove);
   $('.chessboard').append(dancer.$inner);
 };
@@ -53,38 +54,41 @@ Dancer.prototype.boardLineUp = function() {
   var top = 4;
   var left = 1;
   for (var i = 0; i < 8; i++) {
-    this.createDancer('pawndance', top + i, left, PawnDancer);
+    this.createDancer(`pawndancer${top + i}`, top + i, left, PawnDancer);
   }
 
   var left = 14;
   for (var i = 0; i < 8; i++) {
-    this.createDancer('pawndance', top + i, left, PawnDancer);
+    this.createDancer(`pawndancer${14 + i}`, top + i, left, PawnDancer);
   }
 
-  this.createDancer('rookdance', 4, 0, RookDancer);
-  this.createDancer('knightdance', 5, 0, KnightDancer);
-  this.createDancer('bishopdance', 6, 0, BishopDancer);
-  this.createDancer('queendance', 7, 0, QueenDancer);
-  this.createDancer('kingdance', 8, 0, KingDancer);
-  this.createDancer('knightdance', 10, 0, KnightDancer);
-  this.createDancer('bishopdance', 9, 0, BishopDancer);
-  this.createDancer('rookdance', 11, 0, RookDancer);
+  this.createDancer('rookdancetpL', 4, 0, RookDancer);
+  this.createDancer('knightdancetpL', 5, 0, KnightDancer);
+  this.createDancer('bishopdancetpL', 6, 0, BishopDancer);
+  this.createDancer('queendanceL', 7, 0, QueenDancer);
+  this.createDancer('kingdanceL', 8, 0, KingDancer);
+  this.createDancer('bishopdancebtmL', 9, 0, BishopDancer);
+  this.createDancer('knightdancebtmL', 10, 0, KnightDancer);
+  this.createDancer('rookdancebtmL', 11, 0, RookDancer);
 
-  this.createDancer('rookdance', 4, 15, RookDancer);
-  this.createDancer('knightdance', 5, 15, KnightDancer);
-  this.createDancer('bishopdance', 6, 15, BishopDancer);
-  this.createDancer('kingdance', 7, 15, KingDancer);
-  this.createDancer('queendance', 8, 15, QueenDancer);
-  this.createDancer('bishopdance', 9, 15, BishopDancer);
-  this.createDancer('rookdance', 11, 15, RookDancer);
-  this.createDancer('knightdance', 10, 15, KnightDancer);
+  this.createDancer('rookdancetpR', 4, 15, RookDancer);
+  this.createDancer('knightdancetpR', 5, 15, KnightDancer);
+  this.createDancer('bishopdancetpR', 6, 15, BishopDancer);
+  this.createDancer('kingdanceR', 7, 15, KingDancer);
+  this.createDancer('queendanceR', 8, 15, QueenDancer);
+  this.createDancer('bishopdancebtmR', 9, 15, BishopDancer);
+  this.createDancer('knightdancebtmR', 10, 15, KnightDancer);
+  this.createDancer('rookdancebtmR', 11, 15, RookDancer);
 };
 
-Dancer.prototype.centerDancer = function(rmClass, addClass, addFn) {
-  $('body').find(rmClass).remove();
+Dancer.prototype.centerDancer = function(rmClassL, rmClassR, addClass, addFn) {
+  $('body').find(rmClassL).remove();
+  $('body').find(rmClassR).remove();
   this.createDancer(addClass, 7, 7, addFn);
   this.createDancer(addClass, 8, 8, addFn);
+
 };
+
 
 Dancer.prototype.repositionK = function(addClass, addFn) {
   $(addClass).remove();
@@ -122,4 +126,10 @@ Dancer.prototype.repositionB = function(addClass, addFn) {
   this.createDancer(addClass, 9, 15, BishopDancer);
   this.createDancer(addClass, 6, 0, BishopDancer);
   this.createDancer(addClass, 9, 0, BishopDancer);
+};
+
+Dancer.prototype.repositionP = function(rmclass, addClass, addFn) {
+  $('body').find(rmclass).remove();
+  this.createDancer(addClass, 5, 1, PawnDancer);
+  this.createDancer(addClass, 7, 14, PawnDancer);
 };

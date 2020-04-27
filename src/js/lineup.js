@@ -1,18 +1,24 @@
 var lineUp = function(dancers) {
   var topValue = '50%';
-  var leftIncrement = 30;
-  var leftValue = 0;
+  var leftIncrement = Math.min(100 / (dancers.length + 1));
+  var leftValue = leftIncrement;
 
   if ( window.dancersLinedUp ) {
-    /* dancers.forEach(function(dancer, index) {
-      dancer.setPosition(0, 0);
-      var css = {'display': 'none;'};
-    }); */
+    window.dancers.forEach(function(dancer, index) {
+      dancer.setPosition(-2000, 0);
+      // $(dancer.element).hide();
+    });
+    setTimeout(function () {
+      window.dancers.forEach(function(dancer, index) {
+        $(dancer.element).show();
+      });
+    }, 3000);
+
     window.dancersLinedUp = false;
 
   } else {
-    dancers.forEach(function(dancer) {
-      dancer.setPosition(topValue, leftValue);
+    window.dancers.forEach(function(dancer) {
+      dancer.setPosition(topValue, `${leftValue}`);
       leftValue += leftIncrement;
     });
     window.dancersLinedUp = true;
@@ -28,12 +34,16 @@ var chessLineup = function() {
     window.dancers.push(dancer);
     $('.chessboard').append(dancer.$inner);
     dancer.setPosition(top * pixPerMove, left * pixPerMove);
-    setInterval(function() {
+    var interval = setInterval(function() {
       if (window.dancersLinedUp) {
         return;
       }
       dancer.chessMoves();
-    }, 2000);
+    }, 1000);
+
+    $('.chessboard').on('dblclick', function(event) {
+      clearInterval(interval);
+    });
   };
 
   var top = 4;

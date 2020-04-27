@@ -11,7 +11,8 @@ BishopDancer.prototype.step = function() {
   Dancer.prototype.step.call(this);
 };
 
-BishopDancer.prototype.chessMoves = function() {
+BishopDancer.prototype.chessMoves = function(animationName) {
   Dancer.prototype.chessMoves.call(this);
-  this.animate('rotate');
+  animationName = animationName || 'rotate';
+  this.animate(animationName);
 };

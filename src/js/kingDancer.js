@@ -11,7 +11,8 @@ KingDancer.prototype.step = function() {
   Dancer.prototype.step.call(this);
 };
 
-KingDancer.prototype.chessMoves = function() {
+KingDancer.prototype.chessMoves = function(animationName) {
   Dancer.prototype.chessMoves.call(this);
-  this.animate('flip');
+  animationName = animationName || 'flip';
+  this.animate(animationName);
 };

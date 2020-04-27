@@ -17,7 +17,8 @@ PawnDancer.prototype.step = function() {
   Dancer.prototype.step.call(this);
 };
 
-PawnDancer.prototype.chessMoves = function() {
+PawnDancer.prototype.chessMoves = function(animationName) {
   Dancer.prototype.chessMoves.call(this);
-  this.animate('bounce');
+  animationName = animationName || 'bounce';
+  this.animate(animationName);
 };

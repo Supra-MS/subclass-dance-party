@@ -11,7 +11,8 @@ QueenDancer.prototype.step = function() {
   Dancer.prototype.step.call(this);
 };
 
-QueenDancer.prototype.chessMoves = function() {
+QueenDancer.prototype.chessMoves = function(animationName) {
   Dancer.prototype.chessMoves.call(this);
-  this.animate('glow');
+  animationName = animationName || 'glow';
+  this.animate(animationName);
 };
