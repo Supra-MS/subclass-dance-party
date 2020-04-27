@@ -144,8 +144,7 @@ a:hover {
 
 .fa-chess-pawn {
   animation-duration: 0.5s;
-  color: rgb(180, 7, 38);
-  -webkit-text-stroke: 0.35px rgb(53, 51, 51);
+  color: rgb(252, 30, 30);
 }
 
 .bounce {
@@ -243,6 +242,10 @@ a:hover {
   100% { -webkit-transform: translateY(0px); }
 }
 
+.footer {
+  margin-top: 40px;
+}
+
 .logo {
   background-image: url(../images/suprita.png);
   margin-top: 45px;
@@ -289,3 +292,7 @@ audio {
   0% { transform: translateX(1px) }
   100% { transform: translateX(-1px) }
 } */
+
+.fa-chess-king, .fa-chess-queen, .fa-chess-bishop, .fa-chess-knight, .fa-chess-rook, .fa-chess-pawn {
+  -webkit-text-stroke: 1.25px rgb(102, 98, 98);
+}
