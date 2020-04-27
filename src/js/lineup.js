@@ -5,8 +5,8 @@ var lineUp = function(dancers) {
 
   if ( window.dancersLinedUp ) {
     window.dancers.forEach(function(dancer, index) {
-      dancer.setPosition(-2000, 0);
       // $(dancer.element).hide();
+      dancer.setPosition(-2000, 0);
     });
     setTimeout(function () {
       window.dancers.forEach(function(dancer, index) {
