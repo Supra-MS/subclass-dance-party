@@ -178,7 +178,6 @@ $(document).ready(function() {
   $('.clear').on('keydown', function(event) {
     $('body').find('.fas').remove();
     $('body').find('.dancer').remove();
-
   });
 
   // Interactions of close dancers
