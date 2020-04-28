@@ -7,9 +7,7 @@ $(document).ready(function() {
 
   $('.addDancerButton').on('click', function(event) {
     var dancerMakerFunctionName = $(this).data('dancer-type');
-    console.log(dancerMakerFunctionName, 'dancemakerfnname');
     var dancerMakerFunction = window[dancerMakerFunctionName];
-    console.log(window[dancerMakerFunctionName], 'window[dancerMakerFunctionName]');
 
     if (dancerMakerFunctionName !== 'BlinkyDancer' && dancerMakerFunctionName !== 'FlashDancer') {
       var dancer = new dancerMakerFunction(
